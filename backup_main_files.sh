@@ -22,23 +22,23 @@ if [ "${RSYNC}" != "rsync" ]; then
 fi
 
 if
- test -d $DIR;
+ test -d ${DIR};
 then
- echo "$DIR exists...proceeding";
- yes | rm -R $DIR/* #remove all files in backup
+ echo "${DIR} exists...proceeding";
+ yes | rm -R ${DIR}/* #remove all files in backup
 else
- echo "$DIR does not exist... creating $DIR";
- mkdir $DIR #create backup
+ echo "${DIR} does not exist... creating ${DIR}";
+ mkdir ${DIR} #create backup
 fi
 
 # rsync used for documents directories
-echo "$div" 
+echo "${DIV}" 
 echo "syncing documents..."
 rsync -rv ~/Documents/ ${DIR}
 rsync -rv ~/Projects/ ${DIR}
 rsync -rv ~/Pictures ${DIR}
 echo "finished syncing documents..."
-echo "$div"
+echo "${DIV}"
 
 # copies over bashrc, iptables, ip6tables, backup script, and vimrc
 echo "copying important files..."
@@ -51,7 +51,7 @@ cp -v /etc/iptables/ip6tables.rules ${DIR}/ip6tables.rules
 cp -v ~/.ssh/config ${DIR}/config
 cp -v ~/${UPDATE_SCRIPT} ${DIR}/${UPDATE_SCRIPT}
 echo "finished copying important files"
-echo "$div"
+echo "${DIV}"
 
 #create a log of all installed programs
 echo "preparing installation backups..."
@@ -59,7 +59,7 @@ sudo pacman -Qqe > ${DIR}/pacmanInstall.log
 echo "pacman log created..."
 trizen -Qqe > ${DIR}/trizenInstall.log
 echo "trizen log created..."
-echo "$div"
+echo "${DIV}"
 #to reinstall: pacman -S --needed - < pkglist.txt
 
 #log of all enabled programs
@@ -67,4 +67,4 @@ echo "logging enabled services..."
 touch ${DIR}/enabled.log
 sudo systemctl list-unit-files | grep enabled | tee > ${DIR}/enabled.log 
 echo "enabled services logged..."
-echo "$div"
+echo "${DIV}"
