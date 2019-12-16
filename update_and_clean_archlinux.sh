@@ -21,7 +21,7 @@ if [ -f "LOG_FILE" ]; then
   touch ${LOG_FILE}
   echo "Update started at: " ${DATE} >> ${LOG_FILE}
   echo "Update started at: " ${DATE} 
-  echo -e "${DIV}\n"
+  echo "${DIV}"
   sudo pacman -Syu --noconfirm 
   trizen -Syu --noconfirm --noedit
   sudo pacman -Sc #clear cache and unnecessary packages
