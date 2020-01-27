@@ -1,4 +1,5 @@
 #!/bin/bash
+#Copyright 2020, Andrew Slade, All rights reserved
 
 #usually named backup.sh
 
