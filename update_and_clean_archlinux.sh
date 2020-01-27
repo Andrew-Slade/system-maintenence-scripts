@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Copyright 2020, Andrew Slade, All rights reserved.
 
 #
 # Shell script to update arch linux then clean 
